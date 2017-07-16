@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        flatDir(name: 'fabricLibs', dirs: "fabricLibs/")
+    }
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.23.0'
+    }
+}
+
 apply plugin: 'com.android.application'
+
+apply plugin: 'io.fabric'
+
+repositories {
+    flatDir(name: 'fabricLibs', dirs: "fabricLibs/")
+}
 
 android {
     compileSdkVersion 25
@@ -27,4 +42,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    compile('io.fabric.sdk.android:fabric:1.3.17@aar')
+    compile('com.crashlytics.sdk.android:beta:1.2.5@aar')
+    compile('com.crashlytics.sdk.android:crashlytics-core:2.3.17@aar')
+    compile('com.crashlytics.sdk.android:answers:1.3.13@aar')
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
 }
